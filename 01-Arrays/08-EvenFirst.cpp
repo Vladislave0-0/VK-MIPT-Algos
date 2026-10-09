@@ -1,15 +1,17 @@
 #include <iostream>
+#include <utility>
 #include <vector>
 
 void printVector(const std::vector<int> &v) {
-  for (int num : v) {
+  for (int num : v)
     std::cout << num << " ";
-  }
-  std::cout << '\n';
+
+  std::cout << std::endl;
 }
 
 void evenFirst(std::vector<int> &v) {
   std::vector<int> result;
+  result.reserve(v.size());
 
   for (int num : v) {
     if (num % 2 == 0)

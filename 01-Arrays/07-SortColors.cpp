@@ -1,31 +1,27 @@
+#include <cstddef>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 void printVector(const std::vector<int> &v) {
-  for (int num : v) {
+  for (int num : v)
     std::cout << num << " ";
-  }
-  std::cout << '\n';
-}
 
-void swap(int &x, int &y) {
-  int tmp = std::move(x);
-  x = std::move(y);
-  y = std::move(tmp);
+  std::cout << std::endl;
 }
 
 void sortColors(std::vector<int> &v) {
-  int l = 0;
-  int m = 0;
-  int h = v.size() - 1;
+  std::size_t l = 0;
+  std::size_t m = 0;
+  std::size_t h = v.size();
 
-  while (m <= h) {
+  while (m < h) {
     if (v[m] == 0) {
-      swap(v[l++], v[m++]);
+      std::swap(v[l++], v[m++]);
     } else if (v[m] == 1) {
       m++;
     } else {
-      swap(v[m], v[h--]);
+      std::swap(v[m], v[--h]);
     }
   }
 }

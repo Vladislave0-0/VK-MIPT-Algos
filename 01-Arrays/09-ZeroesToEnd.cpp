@@ -1,17 +1,19 @@
+#include <cstddef>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 void printVector(const std::vector<int> &v) {
-  for (int num : v) {
+  for (int num : v)
     std::cout << num << " ";
-  }
-  std::cout << '\n';
+
+  std::cout << std::endl;
 }
 
-void ZeroesToEnd(std::vector<int> &v) {
-  int idx = 0;
+void zeroesToEnd(std::vector<int> &v) {
+  std::size_t idx = 0;
 
-  for (int i = 0, v_size = v.size(); i < v_size; ++i) {
+  for (std::size_t i = 0; i < v.size(); ++i) {
     if (v[i] != 0)
       std::swap(v[i], v[idx++]);
   }
@@ -20,6 +22,6 @@ void ZeroesToEnd(std::vector<int> &v) {
 int main() {
   std::vector<int> v1 = {0, 1, 0, 3, 12};
 
-  ZeroesToEnd(v1);
+  zeroesToEnd(v1);
   printVector(v1);
 }

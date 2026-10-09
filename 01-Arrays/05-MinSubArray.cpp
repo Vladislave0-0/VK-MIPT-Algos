@@ -1,13 +1,20 @@
+#include <cstddef>
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
-int minSubArray(const std::vector<int> &v, int target) {
-  int minLen = v.size() + 1;
-  int l = 0;
-  int curSum = 0;
+std::size_t minSubArray(const std::vector<int> &v, int target) {
+  if (v.empty())
+    return 0;
 
-  for (int r = 0, v_size = v.size(); r < v_size; ++r) {
+  if (target <= 0)
+    return 1;
+
+  std::size_t minLen = v.size() + 1;
+  std::size_t l = 0;
+  long long curSum = 0;
+
+  for (std::size_t r = 0; r < v.size(); ++r) {
     curSum += v[r];
 
     while (curSum >= target) {

@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -15,22 +14,13 @@ void reverseArray(std::vector<int> &v, int l, int r) {
     std::swap(v[l++], v[r--]);
 }
 
-void shiftArray(std::vector<int> &v, std::size_t k) {
-  if (v.empty())
-    return;
-
-  k %= v.size();
-  if (k == 0)
-    return;
-
-  reverseArray(v, 0, v.size());
-  reverseArray(v, 0, k);
-  reverseArray(v, k, v.size());
-}
-
 int main() {
-  std::vector<int> v1 = {1, 2, 3, 4, 5, 6, 7};
+  std::vector<int> v1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::vector<int> v2 = {1, 2, 3, 4};
 
-  shiftArray(v1, 3);
+  reverseArray(v1, 0, v1.size() - 1);
+  reverseArray(v2, 0, v2.size() - 1);
+
   printVector(v1);
+  printVector(v2);
 }

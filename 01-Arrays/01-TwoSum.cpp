@@ -3,11 +3,14 @@
 #include <vector>
 
 std::pair<int, int> twoSum(const std::vector<int> &nums, const int target) {
+  if (nums.size() < 2)
+    return {-1, -1};
+
   int l = 0;
-  int r = nums.size() - 1;
+  int r = static_cast<int>(nums.size()) - 1;
 
   while (l < r) {
-    int sum = nums[l] + nums[r];
+    long long sum = static_cast<long long>(nums[l]) + nums[r];
 
     if (sum == target) {
       return {l, r};
